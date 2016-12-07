@@ -49,4 +49,9 @@ public class StringCalculatorTest {
     public void should_return_the_3_when_string_1_comma_1_comma_1() {
         assertThat(calculator.add("1,1,1"), is(3));
     }
+
+    @Test
+    public void should_use_the_delimiter_when_defined() {
+        assertThat(calculator.add("//;\n1;2"), is(3));
+    }
 }
