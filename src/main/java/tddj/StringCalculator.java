@@ -6,18 +6,32 @@ public class StringCalculator {
 
     public int add(String s) {
         if ("".equals(s)) return 0;
-        String delimiter;
-        if (s.startsWith("//")) {
-            delimiter = s.substring(2,3);
-            s = s.substring(4);
-        } else {
-            delimiter = "[,\n]";
-        }
-        String[] values = s.split(delimiter);
+
+        Parser parser = new Parser(s);
+        String[] values = parser.getNumbers();
         int sum = 0;
         for (String value : values) {
             sum = sum + parseInt(value);
         }
         return sum;
+    }
+}
+
+class Parser {
+    private final String input;
+    private final String delimiter;
+
+    public Parser(String input) {
+        if (input.startsWith("//")) {
+            delimiter = input.substring(2, 3);
+            this.input = input.substring(4);
+        } else {
+            delimiter = "[,\n]";
+            this.input = input;
+        }
+    }
+
+    public String[] getNumbers() {
+        return input.split(delimiter);
     }
 }
