@@ -57,15 +57,16 @@ public class StringCalculatorTest {
 
     @Test(expected = NegativeNotAllowed.class)
     public void negative_not_allowed() {
-        calculator.add("1;-1");
+        calculator.add("1,-1");
     }
 
     @Test()
     public void all_negative_are_mentioned() {
         try {
             calculator.add("-1,2,-1");
+            fail("should not be here");
         } catch (NegativeNotAllowed negativeNotAllowed) {
-            assertThat(negativeNotAllowed.getMessage(), is("[-1;-1]"));
+            assertThat(negativeNotAllowed.getMessage(), is("[-1, -1]"));
         }
 
     }

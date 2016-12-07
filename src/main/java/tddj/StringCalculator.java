@@ -15,11 +15,11 @@ public class StringCalculator {
         int sum = 0;
         List<String> errors = new ArrayList<String>();
         for (String value : values) {
-            try {
-                sum = sum + parseInt(value);
-            } catch (NumberFormatException nfe) {
+            int i = parseInt(value);
+            if (i < 0) {
                 errors.add(value);
             }
+            sum = sum + i;
         }
         if (errors.isEmpty())
             return sum;
