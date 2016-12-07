@@ -1,5 +1,8 @@
 package tddj;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Integer.parseInt;
 
 public class StringCalculator {
@@ -10,14 +13,17 @@ public class StringCalculator {
         Parser parser = new Parser(s);
         String[] values = parser.getNumbers();
         int sum = 0;
+        List<String> errors = new ArrayList<String>();
         for (String value : values) {
             try {
                 sum = sum + parseInt(value);
             } catch (NumberFormatException nfe) {
-                throw new NegativeNotAllowed();
+                errors.add(value);
             }
         }
-        return sum;
+        if (errors.isEmpty())
+            return sum;
+        throw new NegativeNotAllowed(errors);
     }
 }
 

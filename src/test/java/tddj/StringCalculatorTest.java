@@ -59,4 +59,14 @@ public class StringCalculatorTest {
     public void negative_not_allowed() {
         calculator.add("1;-1");
     }
+
+    @Test()
+    public void all_negative_are_mentioned() {
+        try {
+            calculator.add("-1,2,-1");
+        } catch (NegativeNotAllowed negativeNotAllowed) {
+            assertThat(negativeNotAllowed.getMessage(), is("[-1;-1]"));
+        }
+
+    }
 }
