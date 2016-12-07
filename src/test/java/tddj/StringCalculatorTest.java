@@ -54,4 +54,9 @@ public class StringCalculatorTest {
     public void should_use_the_delimiter_when_defined() {
         assertThat(calculator.add("//;\n1;2"), is(3));
     }
+
+    @Test(expected = NegativeNotAllowed.class)
+    public void negative_not_allowed() {
+        calculator.add("1;-1");
+    }
 }

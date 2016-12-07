@@ -11,7 +11,11 @@ public class StringCalculator {
         String[] values = parser.getNumbers();
         int sum = 0;
         for (String value : values) {
-            sum = sum + parseInt(value);
+            try {
+                sum = sum + parseInt(value);
+            } catch (NumberFormatException nfe) {
+                throw new NegativeNotAllowed();
+            }
         }
         return sum;
     }
