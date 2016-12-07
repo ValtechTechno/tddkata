@@ -9,6 +9,10 @@ public class StringCalculator {
             return parseInt(s);
         }
         String[] values = s.split(",");
-        return parseInt(values[0]) + parseInt(values[1]);
+        int sum = 0;
+        for (String value : values) {
+            sum = sum + parseInt(value);
+        }
+        return sum;
     }
 }

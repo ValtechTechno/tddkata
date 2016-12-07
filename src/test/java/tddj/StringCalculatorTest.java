@@ -21,4 +21,9 @@ public class StringCalculatorTest {
     public void should_return_3_when_string_1_comma_2() {
         assertThat(new StringCalculator().add("1,2"), is(3));
     }
+
+    @Test
+    public void should_return_the_3_when_string_1_comma_1_comma_1() {
+        assertThat(new StringCalculator().add("1,1,1"), is(3));
+    }
 }
