@@ -1,4 +1,4 @@
-package tddj;
+package tddj.calculator;
 
 import org.junit.Before;
 import org.junit.Test;

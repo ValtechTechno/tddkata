@@ -1,4 +1,4 @@
-package tddj;
+package tddj.calculator;
 
 import java.util.List;
 
